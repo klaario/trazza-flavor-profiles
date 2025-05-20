@@ -578,23 +578,24 @@ const App = () => {
               }}>
             Select Product
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {Object.entries(categories).map(([category, categoryProducts]) => (
-              <div key={category} className="space-y-2">
+              <div key={category} className="space-y-3">
                 {/* Category names - IBM Plex Sans */}
-                <h3 className="font-semibold text-sm tracking-wide transition-colors duration-300" 
+                <h3 className="font-semibold text-base tracking-wide transition-colors duration-300 pb-1 border-b border-opacity-20" 
                     style={{ 
                       fontFamily: "'IBM Plex Sans', sans-serif",
-                      color: currentTheme.textSecondary
+                      color: currentTheme.textSecondary,
+                      borderColor: currentTheme.border
                     }}>
                   {category}
                 </h3>
-                <div className="space-y-1">
+                <div className="space-y-2">
                   {categoryProducts.map(product => (
                     <button
                       key={product}
                       onClick={() => setSelectedProduct(product)}
-                      className="w-full text-left p-2 rounded text-sm transition-all duration-300 border-2"
+                      className="w-full text-left p-3 rounded-lg text-sm leading-relaxed transition-all duration-300 border-2"
                       style={{ 
                         fontFamily: "'IBM Plex Sans', sans-serif",
                         backgroundColor: selectedProduct === product ? currentTheme.selectedButton : 'transparent',
