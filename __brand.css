@@ -1,0 +1,29 @@
+/* __brand.css | trazzafoodsproject.klaario.com */
+:root {
+  /* klaario Plum family */
+  --klaario-plum: #7D435C;
+  --klaario-plum-hover-light: #9B5775; /* Light hover */
+  --klaario-plum-hover-dark:  #6F3C52; /* Dark hover */
+}
+
+/* Global typography: body = Noto Sans */
+html, body {
+  font-family: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings remain Noto Serif (keeps our Tufte-inspired rhythm) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
+  line-height: 1.15;
+}
+
+/* Links / buttons pick up klaario Plum */
+a, button, .btn, .link { color: var(--klaario-plum); }
+a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover-light); }
+
+@media (prefers-color-scheme: dark) {
+  a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover-dark); }
+}
