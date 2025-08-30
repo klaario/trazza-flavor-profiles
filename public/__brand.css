@@ -1,57 +1,15 @@
-/* __brand.css | trazzafoodsproject.klaario.com */
-
-/* --- Colours --- */
-:root {
-  --klaario-plum: #7D435C;
-  --klaario-plum-hover-light: #9B5775; /* Light hover */
-  --klaario-plum-hover-dark:  #6F3C52; /* Dark hover */
-}
-
-/* --- Typography (authoritative) --- */
-/* Force Noto Sans site-wide, then restore headings to Serif.
-   The !important here keeps things consistent against utility classes. */
+/* 1) Base: body uses Noto Sans */
 :where(html, body, #root) {
   font-family: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
 }
-:where(html, body, #root) :where(*) {
+
+/* 2) Inherit Noto Sans to everything EXCEPT headings */
+:where(html, body, #root) :where(*, *::before, *::after):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
   font-family: inherit !important;
 }
+
+/* 3) Headings = Noto Serif (wins vs classes and inline styles without !important) */
 :where(h1, h2, h3, h4, h5, h6) {
   font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif !important;
   line-height: 1.15;
-}
-
-/* --- Links in klaario Plum --- */
-a, button, .btn, .link { color: var(--klaario-plum); }
-a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover-light); }
-
-@media (prefers-color-scheme: dark) {
-  a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover-dark); }
-}
-/* === Authoritative font variables (override any app-defined ones) === */
-:root {
-  --font-sans: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
-  --font-serif: 'Noto Serif', Georgia, 'Times New Roman', Times, serif !important;
-}
-
-/* If the app uses var(--font-sans) / var(--font-serif), capture those */
-:where(html, body, #root) {
-  font-family: var(--font-sans) !important;
-}
-:where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-serif) !important;
-}
-
-/* === Maximal cascade win: everything inherits Noto Sans unless explicitly Serif === */
-:where(html, body, #root) :where(*, *::before, *::after) {
-  font-family: inherit !important;
-}
-
-/* A lot of frameworks alias via "font-sans" / "font-serif" utility classes */
-.font-sans, [class*="font-sans"] { font-family: var(--font-sans) !important; }
-.font-serif, [class*="font-serif"] { font-family: var(--font-serif) !important; }
-
-/* Neutralise any direct references to IBM Plex that might still exist */
-[class*="plex"], [class*="Plex"], [style*="IBM Plex"], [style*="IBM+Plex"] {
-  font-family: var(--font-sans) !important;
 }
