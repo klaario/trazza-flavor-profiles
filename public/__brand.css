@@ -88,3 +88,69 @@ html[data-theme="light"] .container {
 
 /* Help UA widgets (forms/scrollbars) choose appropriate palette */
 :root { color-scheme: light dark; }
+/* ===== Dark-mode utility neutralizers (only when following system AND OS is dark) ===== */
+
+/* 1) Apply dark variables to the main surfaces so they win over utility classes */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) body,
+  html:not([data-theme]) #root,
+  html:not([data-theme]) main,
+  html:not([data-theme]) header,
+  html:not([data-theme]) footer,
+  html:not([data-theme]) section,
+  html:not([data-theme]) .container,
+  html:not([data-theme]) .app {
+    background-color: var(--bg) !important;
+    color: var(--fg) !important;
+  }
+
+  /* 2) Most common Tailwind “light” background utilities to neutralize */
+  html:not([data-theme]) .bg-white,
+  html:not([data-theme]) .bg-gray-50,
+  html:not([data-theme]) .bg-slate-50,
+  html:not([data-theme]) .bg-neutral-50 {
+    background-color: var(--bg) !important;
+  }
+
+  /* 3) Most common “dark text” utilities that clash in dark mode */
+  html:not([data-theme]) .text-gray-800,
+  html:not([data-theme]) .text-slate-800,
+  html:not([data-theme]) .text-neutral-900 {
+    color: var(--fg) !important;
+  }
+
+  /* 4) Links remain klaario Plum in dark */
+  html:not([data-theme]) a { color: var(--link) !important; }
+  html:not([data-theme]) a:hover { color: var(--link-hover) !important; }
+}
+
+/* ===== Manual overrides still work exactly as before ===== */
+html[data-theme="dark"] body,
+html[data-theme="dark"] #root,
+html[data-theme="dark"] main,
+html[data-theme="dark"] header,
+html[data-theme="dark"] footer,
+html[data-theme="dark"] section,
+html[data-theme="dark"] .container,
+html[data-theme="dark"] .app {
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
+}
+html[data-theme="dark"] a { color: var(--link) !important; }
+html[data-theme="dark"] a:hover { color: var(--link-hover) !important; }
+
+/* (Optional) Manual Light gets the same priority so it beats utilities */
+html[data-theme="light"] body,
+html[data-theme="light"] #root,
+html[data-theme="light"] main,
+html[data-theme="light"] header,
+html[data-theme="light"] footer,
+html[data-theme="light"] section,
+html[data-theme="light"] .container,
+html[data-theme="light"] .app {
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
+}
+
+/* Help browsers choose UI palette (forms/scrollbars) */
+:root { color-scheme: light dark; }
