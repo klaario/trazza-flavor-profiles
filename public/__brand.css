@@ -8,7 +8,7 @@
   font-family: inherit !important;
 }
 
-/* 3) Headings = Noto Serif (wins vs classes and inline styles without !important) */
+/* 3) Headings = Noto Serif */
 :where(h1, h2, h3, h4, h5, h6) {
   font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif !important;
   line-height: 1.15;
