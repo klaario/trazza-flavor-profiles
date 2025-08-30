@@ -38,3 +38,23 @@ h1, h2, h3, h4, h5, h6,
   font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif !important;
   line-height: 1.15;
 }
+/* Force Noto Sans everywhere except headings (covers Tailwind utilities, component scopes) */
+:where(html, body, #root) {
+  font-family: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
+}
+
+/* Every descendant defaults to Noto Sans */
+:where(html, body, #root) :where(*) {
+  font-family: inherit !important;
+}
+
+/* Put headings back to Noto Serif */
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif !important;
+  line-height: 1.15;
+}
+
+/* If anything intentionally sets IBM Plex via a class, neutralise it */
+[class*="plex"], [class*="Plex"], [style*="IBM Plex"] {
+  font-family: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
+}
