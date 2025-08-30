@@ -48,3 +48,43 @@ a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover
 @media (prefers-color-scheme: dark) {
   a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover-dark); }
 }
+/* ===== Make system/override colours win over utility classes ===== */
+
+/* When following system AND device is dark */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) body,
+  html:not([data-theme]) #root,
+  html:not([data-theme]) main,
+  html:not([data-theme]) .app,
+  html:not([data-theme]) .container {
+    background-color: var(--bg) !important;
+    color: var(--fg) !important;
+  }
+  html:not([data-theme]) a { color: var(--link) !important; }
+  html:not([data-theme]) a:hover { color: var(--link-hover) !important; }
+}
+
+/* When the user explicitly chooses Dark */
+html[data-theme="dark"] body,
+html[data-theme="dark"] #root,
+html[data-theme="dark"] main,
+html[data-theme="dark"] .app,
+html[data-theme="dark"] .container {
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
+}
+html[data-theme="dark"] a { color: var(--link) !important; }
+html[data-theme="dark"] a:hover { color: var(--link-hover) !important; }
+
+/* (Optional) soften Light too, so it beats aggressive utilities */
+html[data-theme="light"] body,
+html[data-theme="light"] #root,
+html[data-theme="light"] main,
+html[data-theme="light"] .app,
+html[data-theme="light"] .container {
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
+}
+
+/* Help UA widgets (forms/scrollbars) choose appropriate palette */
+:root { color-scheme: light dark; }
