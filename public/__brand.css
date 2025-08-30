@@ -1,60 +1,30 @@
 /* __brand.css | trazzafoodsproject.klaario.com */
+
+/* --- Colours --- */
 :root {
-  /* klaario Plum family */
   --klaario-plum: #7D435C;
   --klaario-plum-hover-light: #9B5775; /* Light hover */
   --klaario-plum-hover-dark:  #6F3C52; /* Dark hover */
 }
 
-/* Global typography: body = Noto Sans */
-html, body {
-  font-family: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Headings remain Noto Serif (keeps our Tufte-inspired rhythm) */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
-  line-height: 1.15;
-}
-
-/* Links / buttons pick up klaario Plum */
-a, button, .btn, .link { color: var(--klaario-plum); }
-a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover-light); }
-
-@media (prefers-color-scheme: dark) {
-  a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover-dark); }
-}
-/* Tailwind-friendly overrides so everything picks Noto Sans unless explicitly serif */
-body, .font-sans, .prose, .prose p, .prose li, .prose a, .prose span, .prose strong, .prose em {
-  font-family: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
-}
-
-/* Headings as Noto Serif even if Tailwind applies .font-sans upstream */
-h1, h2, h3, h4, h5, h6,
-.font-serif, .prose h1, .prose h2, .prose h3, .prose h4 {
-  font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif !important;
-  line-height: 1.15;
-}
-/* Force Noto Sans everywhere except headings (covers Tailwind utilities, component scopes) */
+/* --- Typography (authoritative) --- */
+/* Force Noto Sans site-wide, then restore headings to Serif.
+   The !important here keeps things consistent against utility classes. */
 :where(html, body, #root) {
   font-family: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
 }
-
-/* Every descendant defaults to Noto Sans */
 :where(html, body, #root) :where(*) {
   font-family: inherit !important;
 }
-
-/* Put headings back to Noto Serif */
 :where(h1, h2, h3, h4, h5, h6) {
   font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif !important;
   line-height: 1.15;
 }
 
-/* If anything intentionally sets IBM Plex via a class, neutralise it */
-[class*="plex"], [class*="Plex"], [style*="IBM Plex"] {
-  font-family: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
+/* --- Links in klaario Plum --- */
+a, button, .btn, .link { color: var(--klaario-plum); }
+a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover-light); }
+
+@media (prefers-color-scheme: dark) {
+  a:hover, button:hover, .btn:hover, .link:hover { color: var(--klaario-plum-hover-dark); }
 }
