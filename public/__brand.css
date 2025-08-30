@@ -6,7 +6,7 @@
   --klaario-plum-hover-light: #9B5775; /* Light hover */
   --klaario-plum-hover-dark:  #6F3C52; /* Dark hover */
 
-  /* Font vars (helpful if the app uses CSS variables) */
+  /* Font vars */
   --font-sans: 'Noto Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
   --font-serif: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
 }
@@ -23,8 +23,10 @@
   font-family: inherit !important;
 }
 
-/* 3) Headings = Noto Serif, weight = Medium (500) */
-:where(h1, h2, h3, h4, h5, h6) {
+/* 3) Headings = Noto Serif, weight = Medium (500) — high-specificity, wins vs utilities */
+h1, h2, h3, h4, h5, h6,
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6,
+h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   font-family: var(--font-serif) !important;
   font-weight: 500 !important;   /* Medium */
   line-height: 1.15;
